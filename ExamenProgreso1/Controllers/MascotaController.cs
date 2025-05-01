@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SergioMasin.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SergioMasin.Controllers
 {
-    [Route("Mascota")]
-    [Route("Mascota/[action]")]
-    [Route("Mascota/[action]/{id?}")]
     public class MascotaController : Controller
     {
         private readonly SQLServer_SergioMasin _context;
@@ -21,40 +15,19 @@ namespace SergioMasin.Controllers
             _context = context;
         }
 
-        // GET: Mascotas
         public async Task<IActionResult> Index()
         {
             return View(await _context.Mascota.ToListAsync());
         }
 
-        // GET: Mascotas/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var mascota = await _context.Mascota
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (mascota == null)
-            {
-                return NotFound();
-            }
-
-            return View(mascota);
-        }
-
-        // GET: Mascotas/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Mascotas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Especie,Raza,Edad,Tamano")] Mascota mascota)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Raza,Edad,FechaNacimiento,TieneVacunas")] Mascota mascota)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +38,6 @@ namespace SergioMasin.Controllers
             return View(mascota);
         }
 
-        // GET: Mascotas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,10 +53,9 @@ namespace SergioMasin.Controllers
             return View(mascota);
         }
 
-        // POST: Mascotas/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Especie,Raza,Edad,Tamano")] Mascota mascota)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Raza,Edad,FechaNacimiento,TieneVacunas")] Mascota mascota)
         {
             if (id != mascota.Id)
             {
@@ -114,7 +85,6 @@ namespace SergioMasin.Controllers
             return View(mascota);
         }
 
-        // GET: Mascotas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,7 +102,6 @@ namespace SergioMasin.Controllers
             return View(mascota);
         }
 
-        // POST: Mascotas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -153,4 +122,5 @@ namespace SergioMasin.Controllers
         }
     }
 }
+
 

@@ -25,8 +25,7 @@ namespace SergioMasin.Models
         [DataType(DataType.Date)]
         public DateOnly FechaVisita { get; set; }
         [Display(Name = "Numero de Telefono")]
-        [DataType(DataType.PhoneNumber)]
-        public string Telefono { get; set; }
+        public required string Telefono { get; set; }
 
     }
 
