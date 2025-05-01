@@ -1,44 +1,32 @@
-﻿@model SergioMasin.Models.Visita
-
-@{
-    ViewData["Title"] = "Edit";
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
 
-<h1>Edit</h1>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p><img src="~/images/proxy-image.png" class="img-fluid meme-image" alt="Responsive image"></p>
 
-<h4>Visita</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="FechaVisita" class="control-label"></label>
-                <input asp-for="FechaVisita" class="form-control" />
-                <span asp-validation-for="FechaVisita" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tarifa" class="control-label"></label>
-                <input asp-for="Tarifa" class="form-control" />
-                <span asp-validation-for="Tarifa" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="RequiereMedicacion" /> @Html.DisplayNameFor(model => model.RequiereMedicacion)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="form-group mt-4">
+        <label for="nombre">Escribe tu nombre</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Introduce tu nombre">
     </div>
+    <button type="button" class="btn btn-outline-success btn-lg mt-3" onclick="mostrarAlerta()">Mostrar Alerta</button>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<script>
+    function mostrarAlerta() {
+        let nombre = document.getElementById('nombre').value;
+        alert("Mi nombre es Sergio Masin, mi curso es Programacion 4 y mi hobbie es Saltar Canguros. El valor del campo de texto es: " + nombre);
+    }
+</script>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<style>
+    .meme-image {
+        width: 700px;
+        height: 700px;
+        object-fit: cover;
+    }
+</style>
+
 }
