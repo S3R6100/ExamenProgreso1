@@ -11,6 +11,16 @@ namespace SergioMasin.Controllers
 {
     public class DuenoesController : Controller
     {
+        public IActionResult DetailsCliente()
+        {
+            return View(DetailsCliente);
+        }
+
+        private IActionResult View(Func<IActionResult> details)
+        {
+            throw new NotImplementedException();
+        }
+
         private readonly SQLServer_SergioMasin _context;
 
         public DuenoesController(SQLServer_SergioMasin context)
