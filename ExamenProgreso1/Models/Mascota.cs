@@ -20,6 +20,6 @@ namespace SergioMasin.Models
         public int Edad { get; set; }
         [DataType(DataType.Text)]
         public string Tamano { get; set; }
-        
+
     }
 }

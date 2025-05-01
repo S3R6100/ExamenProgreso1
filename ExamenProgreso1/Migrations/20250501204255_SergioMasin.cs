@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SergioMasin.Migrations
 {
     /// <inheritdoc />
-    public partial class MigraciondeDatos : Migration
+    public partial class SergioMasin : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,9 +51,8 @@ namespace SergioMasin.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FechaVisita = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    tarifa = table.Column<int>(type: "int", nullable: false),
-                    Motivo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Emergencia = table.Column<bool>(type: "bit", nullable: false)
+                    Tarifa = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    RequiereMedicacion = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

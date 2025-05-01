@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SergioMasin.Models
 {
@@ -8,47 +9,37 @@ namespace SergioMasin.Models
         [Required]
         [Display(Name = "ID")]
         [Range(1, 999)]
-        [DataType(DataType.Text)]
         public int Id { get; set; }
+
+        [Required]
+        [Display(Name = "Fecha de Visita")]
         [DataType(DataType.Date)]
         public DateTime FechaVisita { get; set; }
-        [DataType(DataType.Text)]
-        public int tarifa { get; set; }
-        [DataType(DataType.Text)]
+
+        [Required]
+        [Display(Name = "Tarifa")]
+        [Range(0, 200)]
+        public decimal Tarifa { get; set; }
+
+        [Display(Name = "Motivo")]
         public string Motivo
         {
             get
             {
-                if (Motivo == "Vacunacion")
-                {   
-                    tarifa = 30;
-                    return "Vacunacion";
-                }
-                else if (Motivo == "Revision")
+                return Tarifa switch
                 {
-                    tarifa = 20;
-                    return "Revision";
-                }
-                else if (Motivo == "Cirugia")
-                {
-                    tarifa = 50;
-                    return "Cirugia";
-                }
-                else
-                {
-                    tarifa = 0;
-                    return Motivo;
-                }
-            }
-            set
-            {
-                Motivo = value;
+                    30 => "Vacunación",
+                    20 => "Revisión General",
+                    100 => "Cirugía",
+                    _ => "Otro"
+                };
             }
         }
 
-        [DataType(DataType.Text)]
-        public bool Emergencia { get; set; }
-
+        [Required]
+        [Display(Name = "Requiere Medicación")]
+        public bool RequiereMedicacion { get; set; }
     }
-
 }
+
+

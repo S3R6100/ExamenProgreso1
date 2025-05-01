@@ -23,7 +23,7 @@ namespace SergioMasin.Models
         public bool Seguro { get; set; }
         [Display(Name = "Fecha de Visita")]
         [DataType(DataType.Date)]
-        public DateOnly FechaVisita  { get; set; }
+        public DateOnly FechaVisita { get; set; }
         [Display(Name = "Numero de Telefono")]
         [DataType(DataType.PhoneNumber)]
         public string Telefono { get; set; }

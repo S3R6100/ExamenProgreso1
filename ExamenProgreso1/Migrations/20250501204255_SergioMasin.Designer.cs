@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace SergioMasin.Migrations
 {
     [DbContext(typeof(SQLServer_SergioMasin))]
-    [Migration("20250501132614_Migracion de Datos")]
-    partial class MigraciondeDatos
+    [Migration("20250501204255_SergioMasin")]
+    partial class SergioMasin
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -92,18 +92,14 @@ namespace SergioMasin.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Emergencia")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("FechaVisita")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Motivo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("RequiereMedicacion")
+                        .HasColumnType("bit");
 
-                    b.Property<int>("tarifa")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Tarifa")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

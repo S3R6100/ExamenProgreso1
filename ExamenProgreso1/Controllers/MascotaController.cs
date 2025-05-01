@@ -9,11 +9,14 @@ using SergioMasin.Models;
 
 namespace SergioMasin.Controllers
 {
-    public class MascotasController : Controller
+    [Route("Mascota")]
+    [Route("Mascota/[action]")]
+    [Route("Mascota/[action]/{id?}")]
+    public class MascotaController : Controller
     {
         private readonly SQLServer_SergioMasin _context;
 
-        public MascotasController(SQLServer_SergioMasin context)
+        public MascotaController(SQLServer_SergioMasin context)
         {
             _context = context;
         }
@@ -49,8 +52,6 @@ namespace SergioMasin.Controllers
         }
 
         // POST: Mascotas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Especie,Raza,Edad,Tamano")] Mascota mascota)
@@ -81,8 +82,6 @@ namespace SergioMasin.Controllers
         }
 
         // POST: Mascotas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Especie,Raza,Edad,Tamano")] Mascota mascota)
@@ -154,3 +153,4 @@ namespace SergioMasin.Controllers
         }
     }
 }
+
